@@ -19,13 +19,20 @@ function showPosition() {
         { latitude: 24.181015, longitude: 120.545292 },
         { latitude: 24.197154, longitude: 120.523584 },
         { latitude: 24.189514, longitude: 120.512417 },
+        { latitude: 24.146845, longitude: 120.645157 },
+        { latitude: 24.145183, longitude: 120.646917 },
+        { latitude: 24.145875, longitude: 120.644701 },
+        { latitude: 24.144960, longitude: 120.629129 },
+        { latitude: 24.139321, longitude: 120.584154 },
+        { latitude: 24.186072, longitude: 120.661487 },
+        { latitude: 24.152009, longitude: 120.682258 },
     ];
 
     var markers = [];
 
     var icon = {
         //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
-        url: "image/FamilyWork.png",
+        url: "image/tag_work.png",
         size: new google.maps.Size(36, 48),
         scaledSize: new google.maps.Size(36, 48), // scaled size
         origin: new google.maps.Point(0, 0), // origin
@@ -34,7 +41,25 @@ function showPosition() {
 
     var icon_tool = {
         //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
-        url: "image/FamilyWork_1.png",
+        url: "image/tag_help.png",
+        size: new google.maps.Size(36, 48),
+        scaledSize: new google.maps.Size(36, 48), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+    var icon_join = {
+        //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
+        url: "image/tag_join.png",
+        size: new google.maps.Size(36, 48),
+        scaledSize: new google.maps.Size(36, 48), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+    var icon_join2 = {
+        //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
+        url: "image/tag_join2.png",
         size: new google.maps.Size(36, 48),
         scaledSize: new google.maps.Size(36, 48), // scaled size
         origin: new google.maps.Point(0, 0), // origin
@@ -45,10 +70,22 @@ function showPosition() {
         var dataPhoto = data[i];
         var latLng = new google.maps.LatLng(dataPhoto.latitude,
             dataPhoto.longitude);
-        if ((i % 2) == 0) {
+        if ((i % 5) == 0) {
             var marker = new google.maps.Marker({
                 position: latLng,
                 icon: icon,
+            });
+        }
+        else if ((i % 3) == 0) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                icon: icon_join,
+            });
+        }
+        else if ((i % 2) == 0) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                icon: icon_join2,
             });
         }
         else {
