@@ -140,11 +140,11 @@ function prevTab(elem) {
 }
 
 function setPosition(lat, lng) {
-  // call google api ...  padding...
+  // call google api ... padding...
 }
 
 function setAddersss(address) {
-  if(address.length > 14){
+  if (address.length > 14) {
     address = address.substr(0, 14);
   }
   $("#t-position > strong").text(address + " ...");
