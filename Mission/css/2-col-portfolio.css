@@ -180,3 +180,29 @@ footer {
 #complete > .well.well-lg > div > strong{
     font-size: 24px;
 }
+
+/*
+ *
+ * Props
+ *
+ */
+div.propsList > div{
+    margin: 12px;
+}
+
+div.propsList > div > img{
+    margin: 12px;
+}
+
+div.propsList > div > img.disable{
+    -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(50%);
+}
+
+div.propsList > div > img{
+    margin: 12px;
+}
+
+div.propsList > div > h4{
+    padding: 12px;
+}

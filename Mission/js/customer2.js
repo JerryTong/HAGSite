@@ -152,6 +152,7 @@ function setAddersss(address) {
 
 function setMissionType(image, title) {
   $("#t-missionType > strong").text(title);
+  $("#t-missionType > img").attr("src", image);
 }
 
 function setEgg(count) {

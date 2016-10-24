@@ -123,17 +123,7 @@
 
         <!-- Projects Row -->
         <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <h3>
-                    <a href="#">Project One</a>
-                </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna
-                    varius vitae.</p>
-            </div>
-            <div class="col-md-8 portfolio-item">
+            <div class="col-md-12 portfolio-item">
                 <div id="map"></div>
             </div>
         </div>
@@ -190,7 +180,8 @@
     <script src="js/customer2.js"></script>
 
     <script>
-        google.maps.event.addDomListener(window, 'load', showPosition);
+        //call map js.
+        google.maps.event.addDomListener(window, 'load', loadData);
         
         $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
