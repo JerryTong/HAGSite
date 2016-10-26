@@ -19,13 +19,30 @@ function showPosition() {
         { latitude: 24.181015, longitude: 120.545292 },
         { latitude: 24.197154, longitude: 120.523584 },
         { latitude: 24.189514, longitude: 120.512417 },
+        { latitude: 24.146845, longitude: 120.645157 },
+        { latitude: 24.145183, longitude: 120.646917 },
+        { latitude: 24.145875, longitude: 120.644701 },
+        { latitude: 24.144960, longitude: 120.629129 },
+        { latitude: 24.139321, longitude: 120.584154 },
+        { latitude: 24.186072, longitude: 120.661487 },
+        { latitude: 24.152009, longitude: 120.682258 },
+        { latitude: 24.178299, longitude: 120.617125 },
     ];
 
     var markers = [];
 
+    var icon_halo = {
+        //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
+        url: "image/halo_bk.png",
+        size: new google.maps.Size(44, 48),
+        scaledSize: new google.maps.Size(44, 48), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(4, 6) // anchor
+    };
+
     var icon = {
         //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
-        url: "image/FamilyWork.png",
+        url: "image/tag_work.png",
         size: new google.maps.Size(36, 48),
         scaledSize: new google.maps.Size(36, 48), // scaled size
         origin: new google.maps.Point(0, 0), // origin
@@ -34,7 +51,25 @@ function showPosition() {
 
     var icon_tool = {
         //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
-        url: "image/FamilyWork_1.png",
+        url: "image/tag_help.png",
+        size: new google.maps.Size(36, 48),
+        scaledSize: new google.maps.Size(36, 48), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+    var icon_join = {
+        //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
+        url: "image/tag_join.png",
+        size: new google.maps.Size(36, 48),
+        scaledSize: new google.maps.Size(36, 48), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+    var icon_join2 = {
+        //url: "http://wfarm1.dataknet.com/static/resources/icons/set105/7ce3e2c.png", // url
+        url: "image/tag_join2.png",
         size: new google.maps.Size(36, 48),
         scaledSize: new google.maps.Size(36, 48), // scaled size
         origin: new google.maps.Point(0, 0), // origin
@@ -45,10 +80,22 @@ function showPosition() {
         var dataPhoto = data[i];
         var latLng = new google.maps.LatLng(dataPhoto.latitude,
             dataPhoto.longitude);
-        if ((i % 2) == 0) {
+        if ((i % 5) == 0) {
             var marker = new google.maps.Marker({
                 position: latLng,
                 icon: icon,
+            });
+        }
+        else if ((i % 3) == 0) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                icon: icon_join,
+            });
+        }
+        else if ((i % 2) == 0) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                icon: icon_join2,
             });
         }
         else {
@@ -56,6 +103,14 @@ function showPosition() {
                 position: latLng,
                 icon: icon_tool,
             });
+        }
+
+        if (i == (data.length - 1)) {
+            var marker_halo = new google.maps.Marker({
+                position: latLng,
+                icon: icon_halo,
+            });
+            markers.push(marker_halo);
         }
 
         markers.push(marker);
@@ -71,9 +126,9 @@ function showPosition() {
         });
 
     }
-    var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m' });
+    var markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m', maxZoom: 15, });
 
-    // user location 
+    // user location
     //console.log(position.coords.latitude + "," + position.coords.longitude);
     google.maps.event.addListener(marker, "click", function () {
         infowindow.setContent('Super Man');
@@ -126,7 +181,7 @@ function showUserClickPanel() {
         var markerPosition = marker.getPosition();
         // map to center
         //map.setCenter(markerPosition);
-        
+
         geocoder.geocode({
             'latLng': markerPosition
         }, function (results, status) {
@@ -135,7 +190,7 @@ function showUserClickPanel() {
                     // 將取得的資訊傳入 marker infowindow.
                     infowindow.setContent(results[1].formatted_address);
                     infowindow.open(map, marker);
-                    
+
                     $("#missionAddress").val(results[1].formatted_address)
                 }
             } else {
@@ -145,7 +200,7 @@ function showUserClickPanel() {
     });
 };
 
-// A function to create the marker and set up the event window function 
+// A function to create the marker and set up the event window function
 function createMarker(latlng, name) {
     //var contentString = html;
 
@@ -168,7 +223,7 @@ function createMarker(latlng, name) {
     google.maps.event.addListener(marker, 'click', function () {
         $("#missionlat").val(marker.position.lat());
         $("#missionlng").val(marker.position.lng());
-        //infowindow.setContent(contentString); 
+        //infowindow.setContent(contentString);
         //infowindow.open(map,marker);
     });
     google.maps.event.trigger(marker, 'click');

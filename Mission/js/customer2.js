@@ -140,11 +140,11 @@ function prevTab(elem) {
 }
 
 function setPosition(lat, lng) {
-  // call google api ...  padding...
+  // call google api ... padding...
 }
 
 function setAddersss(address) {
-  if(address.length > 14){
+  if (address.length > 14) {
     address = address.substr(0, 14);
   }
   $("#t-position > strong").text(address + " ...");
@@ -152,9 +152,21 @@ function setAddersss(address) {
 
 function setMissionType(image, title) {
   $("#t-missionType > strong").text(title);
+  $("#t-missionType > img").attr("src", image);
 }
 
 function setEgg(count) {
   $("#t-egg > strong").text("x " + count);
 }
+
+// mission detail submit
+$(".propsbtn").click(function(e){
+  if($(this).hasClass("btn-default")){
+    $(this).removeClass("btn-default").addClass("btn-super");
+  }
+  else{
+    $(this).removeClass("btn-super").addClass("btn-default");
+  }
+  console.log($(this).attr("class"));
+});
 // END
