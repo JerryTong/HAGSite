@@ -170,3 +170,11 @@ $(".propsbtn").click(function(e){
   console.log($(this).attr("class"));
 });
 // END
+
+// profile page
+$(".btn-pref .btn").click(function () {
+    $(".btn-pref .btn").removeClass("btn-super").addClass("btn-super-low");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).removeClass("btn-super-low").addClass("btn-super");   
+});
+// END
